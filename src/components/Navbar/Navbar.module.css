@@ -1,0 +1,42 @@
+/* Фиксированное меню внизу для мобильных устройств */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #121212; /* Очень темный фон */
+    color: #ffffff;
+    padding: 12px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+  }
+  
+  /* Элементы меню выстроены вертикально: иконка сверху, текст снизу */
+  .navbarItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .navbarItem:hover {
+    transform: translateY(-4px);
+    color: #1e90ff; /* Эффект свечения: акцентный голубой цвет */
+  }
+  
+  /* Стили для иконок */
+  .icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+  
+  /* Стили для подписи */
+  .label {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  

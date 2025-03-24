@@ -1,0 +1,131 @@
+/* Общий стиль для контента */
+.content {
+    flex: 1;
+    background-color: #121212; /* Очень темный фон */
+    color: #ffffff;
+    padding: 30px 15px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  /* Заголовок с эффектом свечения */
+  .title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #E14059; /* Используем основной цвет для заголовка */
+    text-shadow: 0 0 6px rgba(225, 64, 89, 0.6), 0 0 12px rgba(225, 64, 89, 0.4);
+    transition: text-shadow 0.3s ease;
+  }
+  
+  /* Эффект при наведении на заголовок */
+  .title:hover {
+    text-shadow: 0 0 10px rgba(225, 64, 89, 0.8), 0 0 18px rgba(225, 64, 89, 0.6);
+  }
+  
+  /* Обычные текстовые абзацы с красивым эффектом */
+  .text {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #ddd;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.1), 0 0 8px rgba(255, 255, 255, 0.2);
+    transition: text-shadow 0.3s ease;
+  }
+  
+  /* Эффект свечения для текста */
+  .text:hover {
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6), 0 0 12px rgba(0, 255, 255, 0.5);
+  }
+  
+  /* Стили для разделов */
+  .section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  }
+  
+  /* Заголовок раздела */
+  .sectionTitle {
+    font-size: 30px;
+    color: #2E79BD; /* Цвет для заголовков разделов */
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(46, 121, 189, 0.6);
+    transition: text-shadow 0.3s ease;
+  }
+  
+  /* Эффект при наведении на заголовок раздела */
+  .sectionTitle:hover {
+    text-shadow: 0 0 12px rgba(46, 121, 189, 0.8), 0 0 18px rgba(46, 121, 189, 0.6);
+  }
+  
+  /* Обычный текст в разделах */
+  .sectionText {
+    font-size: 16px;
+    color: #ddd;
+    margin-bottom: 15px;
+  }
+  
+  /* Стили для отдельных элементов в разделах */
+  .item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  /* Эффект при наведении на элемент */
+  .item:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Заголовок элемента */
+  .itemTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2E79BD; /* Цвет для заголовков элементов */
+    margin-bottom: 10px;
+  }
+  
+  /* Обычный текст элемента */
+  .item p {
+    font-size: 16px;
+    color: #bbb;
+  }
+  
+  /* Стили для ссылок или других интерактивных элементов */
+  a {
+    color: #00ffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #E14059; /* Основной цвет при наведении на ссылку */
+  }
+  
+  /* Стили для мобильных устройств */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 28px;
+    }
+  
+    .text {
+      font-size: 16px;
+    }
+  
+    .sectionTitle {
+      font-size: 24px;
+    }
+  
+    .itemTitle {
+      font-size: 18px;
+    }
+  }
+  
