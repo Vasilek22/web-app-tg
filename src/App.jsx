@@ -3,6 +3,7 @@ import './App.css';
 import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
 import { useTelegram } from './hooks/useTelegram';
+import Header from './components/Header/Header';
 
 function App() {
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
@@ -34,6 +35,7 @@ function App() {
         </div>
       ) : (
         <>
+          <Header/>
           <Content />
           <Navbar />
         </>
