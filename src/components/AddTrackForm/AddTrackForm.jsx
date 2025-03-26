@@ -26,38 +26,33 @@ export default function AddTrackForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     // Проверка на заполненность полей
     if (!trackName || !artistName || !file) {
       setError('Все поля должны быть заполнены');
       return;
     }
-
+  
     // Создаем объект FormData для отправки данных
     const formData = new FormData();
     formData.append('trackName', trackName);
     formData.append('artistName', artistName);
     formData.append('file', file);
-
+  
     // Получаем chatId из данных пользователя
     const userChatId = user?.id; // Используем chatId из объекта user
-
+  
     if (!userChatId) {
       setError('Не удалось получить chatId');
       return;
     }
-
-    // Отправляем данные на сервер
+  
+    // Отправляем данные на сервер с использованием FormData
     fetch('http://localhost:3001/tracks', {
       method: 'POST',
-      body: JSON.stringify({
-        chatId: userChatId,
-        trackName: trackName,
-        artistName: artistName,
-        filePath: '/path/to/file' // Замените на реальный путь после загрузки файла
-      }),
+      body: formData,
       headers: {
-        'Content-Type': 'application/json',
+        // Убираем 'Content-Type', так как FormData автоматически установит правильный тип
       },
     })
       .then((response) => response.json())
@@ -72,6 +67,7 @@ export default function AddTrackForm() {
         console.error('Ошибка при добавлении трека:', error);
       });
   };
+  
 
   return (
     <div className={s.formContainer}>
