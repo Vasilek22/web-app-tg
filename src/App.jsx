@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import Content from './components/Content/Content';
-import Navbar from './components/Navbar/Navbar';
 import { useTelegram } from './hooks/useTelegram';
-import Header from './components/Header/Header';
-
+import { Routes, Route } from "react-router-dom";
+import Layout from './components/Layout/Layout';
+import Content from './components/Content/Content';
+import AddTrackForm from './components/AddTrackForm/AddTrackForm';
 function App() {
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
   const { user } = useTelegram(); // Получаем пользователя из Telegram WebApp
@@ -34,11 +34,12 @@ function App() {
           <h1>{getGreeting()}, {user?.first_name || 'Гость'}!</h1>
         </div>
       ) : (
-        <>
-          <Header/>
-          <Content />
-          <Navbar />
-        </>
+        <Routes> 
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Content />} />
+            <Route path="/add-track" element={<AddTrackForm />} />
+          </Route>
+        </Routes>
       )}
     </div>
   );

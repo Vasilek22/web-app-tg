@@ -1,0 +1,17 @@
+.layout { 
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Занимаем весь экран */
+}
+.content {
+    flex: 1;  /* Контент занимает оставшееся пространство */
+    background-color: rgb(15, 15, 19);
+    overflow-y: auto;  /* Для прокрутки контента */
+    padding: 4.5em 0.35em;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}

@@ -32,7 +32,7 @@ export default function Header() {
         <div className={s.defaultPhoto}>Гость</div>  // Если фото нет, выводим текст
       )}
 
-      <h1 className={s.title}>{greeting}, {user?.username || 'Гость'}!</h1>
+      <h1 className={s.title}>{greeting}, {user?.first_name  || 'Гость'}!</h1>
     </header>
   );
 }

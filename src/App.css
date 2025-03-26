@@ -28,9 +28,7 @@ Link:focus {
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+
 }
 
 /* Заставка с темно-серым и синим фоном */

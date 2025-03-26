@@ -1,0 +1,63 @@
+.card {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.33em;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .card:hover { 
+    background-color: rgb(29, 29, 34);
+  }
+  
+  .cardContent {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+  }
+  
+  .cardImage {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 11px;
+  }
+  
+  .trackInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+  }
+  
+  .trackName {
+    color: white;
+    font-size: 0.8em;
+    font-weight: 600;
+  }
+  
+  .artistName {
+    color: rgb(150, 150, 150);
+    font-size: 0.74em;
+    font-weight: 550;
+  }
+  
+  .cardFooter {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+  
+  .trackDuration {
+    font-size: 0.7em;
+    font-weight: 700;
+    color: rgb(134, 134, 134);
+  }
+  
+  .trackFav {
+    width: 21px;
+  }
+  .trackFav path{
+    stroke: rgb(134, 134, 134);
+    stroke-width: 1.5;
+  }
+  
