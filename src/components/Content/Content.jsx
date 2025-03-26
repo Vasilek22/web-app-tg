@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './Content.module.css';
 import { useTelegram } from '../../hooks/useTelegram';
 
 const Content = () => {
+
+  const [users, setUsers] = useState([]);
+  
+
+  useEffect(() => {
+    fetch('http://localhost:3001/users') // API с бэкенда
+      .then(response => response.json())
+      .then(data => {
+        console.log(data); // Проверим, что получаем
+        setUsers(data); // Обновим состояние с данными
+      })
+      .catch(error => console.error('Ошибка:', error));
+  }, []); // Этот useEffect выполняется только один раз при монтировании компонента
+
 
     const {user} = useTelegram();
 
@@ -23,6 +37,17 @@ const Content = () => {
 
   return (
     <div className={s.content}>
+
+    <ul>
+      {users.map(user => (
+        <div key={user.chatId}>
+          <li>{user.username}</li>
+          <li>{user.chatId}</li>
+        </div>
+      ))}
+    </ul>
+
+
       <h1 className={s.title}>{greeting}, {user?.username || 'Гость'}!</h1>
       <p className={s.text}>Здесь будет основной контент страницы. 🚀</p>
       <p className={s.text}>Пролистывайте, чтобы увидеть, как работает фиксированное меню. 🌐</p>
@@ -41,22 +66,6 @@ const Content = () => {
           <p className={s.itemTitle}>Шаг 2: Создание блокчейна</p>
           <p>Научитесь разрабатывать свой собственный блокчейн для криптовалюты.</p>
         </div>
-      </div>
-
-      {/* Раздел 2 */}
-      <div className={s.section}>
-        <h2 className={s.sectionTitle}>Инновации в криптовалютах 🔑</h2>
-        <p className={s.sectionText}>
-          Криптовалюты открывают новые горизонты для цифровых платежей. Узнайте, как инновации меняют мир!
-        </p>
-      </div>
-
-      {/* Раздел 3 */}
-      <div className={s.section}>
-        <h2 className={s.sectionTitle}>Преимущества блокчейн технологий 🛠️</h2>
-        <p className={s.sectionText}>
-          Узнайте о сильных сторонах блокчейн технологий, таких как безопасность, прозрачность и децентрализация.
-        </p>
       </div>
     </div>
   );

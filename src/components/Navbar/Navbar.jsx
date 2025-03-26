@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
-import { FaChartLine, FaTools, FaUserShield, FaPhoneAlt, FaPlus } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
