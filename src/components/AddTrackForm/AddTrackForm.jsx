@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import s from './AddTrackForm.module.css';
+import { useTelegram } from '../../hooks/useTelegram';
 
 export default function AddTrackForm() {
+  const { user } = useTelegram(); // Получаем данные о пользователе
   const [trackName, setTrackName] = useState('');
   const [artistName, setArtistName] = useState('');
   const [file, setFile] = useState(null);
   const [error, setError] = useState('');
-  const [chatId, setChatId] = useState(''); // Получить chatId из состояния
 
   // Обработка изменения названия трека
   const handleTrackNameChange = (e) => {
@@ -23,31 +24,29 @@ export default function AddTrackForm() {
     setFile(e.target.files[0]);
   };
 
-  // Получение chatId из бота
-  useEffect(() => {
-    // Например, получить chatId из состояния пользователя
-    // setChatId(получить из контекста или другого места, где хранится chatId)
-    setChatId('8033694154'); // Пример chatId
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     // Проверка на заполненность полей
     if (!trackName || !artistName || !file) {
       setError('Все поля должны быть заполнены');
       return;
     }
-  
+
     // Создаем объект FormData для отправки данных
     const formData = new FormData();
     formData.append('trackName', trackName);
     formData.append('artistName', artistName);
     formData.append('file', file);
-  
-    // Здесь предполагается, что chatId уже получен из состояния или контекста
-    const userChatId = chatId; // Получите chatId из состояния
-  
+
+    // Получаем chatId из данных пользователя
+    const userChatId = user?.id; // Используем chatId из объекта user
+
+    if (!userChatId) {
+      setError('Не удалось получить chatId');
+      return;
+    }
+
     // Отправляем данные на сервер
     fetch('http://localhost:3001/tracks', {
       method: 'POST',
@@ -58,22 +57,21 @@ export default function AddTrackForm() {
         filePath: '/path/to/file' // Замените на реальный путь после загрузки файла
       }),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Трек добавлен', data);
-      setError('');
-      setTrackName('');
-      setArtistName('');
-      setFile(null);
-    })
-    .catch(error => {
-      console.error('Ошибка при добавлении трека:', error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Трек добавлен', data);
+        setError('');
+        setTrackName('');
+        setArtistName('');
+        setFile(null);
+      })
+      .catch((error) => {
+        console.error('Ошибка при добавлении трека:', error);
+      });
   };
-  
 
   return (
     <div className={s.formContainer}>
